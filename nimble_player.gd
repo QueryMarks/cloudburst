@@ -14,6 +14,8 @@ extends CharacterBody2D
 @export var weapon : CloudBurst
 @export var shot_points : Node2D
 
+@export var bobs : Array[Sprite2D]
+
 var facing = 1
 
 var aim = 0
@@ -28,4 +30,6 @@ func check_flip():
 	if (lr_input != 0) and (sign(lr_input) != sign(facing)):
 		facing *= -1
 		sprite.flip_h = !sprite.flip_h
+		for bob in bobs:
+			bob.flip_h = !sprite.flip_h
 		shot_points.scale = shot_points.scale * Vector2(-1, 1)
