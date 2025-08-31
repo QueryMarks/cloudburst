@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://w26n4ixd7w5b"]
+
+[ext_resource type="Texture2D" uid="uid://dauxpg48sj0w6" path="res://sprites/cloudburst shot.png" id="1_3jpkn"]
+[ext_resource type="Script" uid="uid://cwpj8k2bkjdn3" path="res://scenes/cloud_shot.gd" id="1_cpcas"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_htoxv"]
+size = Vector2(6, 6)
+
+[node name="Cloudshot" type="Area2D"]
+collision_layer = 2
+script = ExtResource("1_cpcas")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_3jpkn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_htoxv")

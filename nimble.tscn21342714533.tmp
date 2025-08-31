@@ -1,0 +1,274 @@
+[gd_scene load_steps=16 format=3 uid="uid://clreti4w7sapl"]
+
+[ext_resource type="Script" uid="uid://dj7ym72dv4nl" path="res://nimble_player.gd" id="1_4ltst"]
+[ext_resource type="Texture2D" uid="uid://ccbva74rofjmu" path="res://sprites/nimble sheet.png" id="1_n151j"]
+[ext_resource type="Script" uid="uid://jafp1uve0ww2" path="res://scripts/player/states/character_state_machine.gd" id="3_e0l1p"]
+[ext_resource type="Script" uid="uid://dwccr7ik2hlo7" path="res://cloud_burst.gd" id="4_e0l1p"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dq5sm"]
+size = Vector2(8, 14)
+
+[sub_resource type="Animation" id="Animation_n151j"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CollisionShape2D:shape:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(8, 14)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionShape2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:frame_coords")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2i(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dq5sm"]
+_data = {
+&"RESET": SubResource("Animation_n151j")
+}
+
+[sub_resource type="Animation" id="Animation_5ksas"]
+resource_name = "nimble_idle"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2i(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_e0l1p"]
+resource_name = "nimble_jump"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2i(1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_4ltst"]
+resource_name = "nimble_walk"
+length = 0.333335
+loop_mode = 1
+step = 0.0166667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CollisionShape2D:shape:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(8, 14)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionShape2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:frame_coords")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.166667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector2i(1, 0), Vector2i(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_rs08u"]
+resource_name = "nimble_idle_up"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2i(0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_ardgt"]
+resource_name = "nimble_walk_up"
+length = 0.333335
+loop_mode = 1
+step = 0.0166667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CollisionShape2D:shape:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(8, 14)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionShape2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:frame_coords")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.166667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector2i(1, 1), Vector2i(0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_hqsna"]
+resource_name = "nimble_jump_up"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2i(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_ygh00"]
+resource_name = "nimble_jump_down"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2i(1, 2)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_e0l1p"]
+_data = {
+&"nimble_idle": SubResource("Animation_5ksas"),
+&"nimble_idle_up": SubResource("Animation_rs08u"),
+&"nimble_jump": SubResource("Animation_e0l1p"),
+&"nimble_jump_down": SubResource("Animation_ygh00"),
+&"nimble_jump_up": SubResource("Animation_hqsna"),
+&"nimble_walk": SubResource("Animation_4ltst"),
+&"nimble_walk_up": SubResource("Animation_ardgt")
+}
+
+[node name="Nimble" type="Node2D"]
+
+[node name="NimbleBody" type="CharacterBody2D" parent="." node_paths=PackedStringArray("state_machine", "anim_player", "sprite")]
+position = Vector2(0, -8)
+script = ExtResource("1_4ltst")
+friction = null
+walk_accel = null
+walk_speed = null
+air_friction = null
+air_accel = null
+air_speed = null
+jump_speed = null
+state_machine = NodePath("CharacterStateMachine")
+anim_player = NodePath("AnimationPlayer")
+sprite = NodePath("Sprite2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NimbleBody"]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_dq5sm")
+
+[node name="Sprite2D" type="Sprite2D" parent="NimbleBody"]
+texture = ExtResource("1_n151j")
+hframes = 4
+vframes = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="NimbleBody"]
+libraries = {
+&"": SubResource("AnimationLibrary_dq5sm"),
+&"nimble": SubResource("AnimationLibrary_e0l1p")
+}
+
+[node name="CharacterStateMachine" type="Node" parent="NimbleBody"]
+script = ExtResource("3_e0l1p")
+metadata/_custom_type_script = "uid://jafp1uve0ww2"
+
+[node name="shotpoints" type="Node2D" parent="NimbleBody"]
+
+[node name="shotpointh" type="Node2D" parent="NimbleBody/shotpoints"]
+position = Vector2(7, 2)
+
+[node name="shotpointu" type="Node2D" parent="NimbleBody/shotpoints"]
+position = Vector2(3, -8)
+rotation = -1.5708
+
+[node name="shotpointd" type="Node2D" parent="NimbleBody/shotpoints"]
+position = Vector2(0, 8)
+rotation = 1.5708
+
+[node name="CloudBurst" type="Node" parent="NimbleBody"]
+script = ExtResource("4_e0l1p")
