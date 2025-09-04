@@ -25,10 +25,6 @@ window/size/viewport_width=640
 window/size/viewport_height=576
 window/stretch/scale_mode="integer"
 
-[editor_plugins]
-
-enabled=PackedStringArray("res://addons/MetroidvaniaSystem/EditorExtension/plugin.cfg", "res://addons/MetroidvaniaSystem/plugin.cfg")
-
 [input]
 
 up={
