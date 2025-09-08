@@ -22,14 +22,12 @@ func _physics_process(_delta):
 	var lr_input = Input.get_axis("left", "right")
 	if (lr_input != 0):
 		player.check_flip()
-		player.move_and_slide()
 		state_machine.change_state(NimbleWalkState.new())
 	if (abs(player.velocity.x) > 0):
 		var old_sign = sign(player.velocity.x)
 		player.velocity.x -= player.friction*(sign(player.velocity.x))
 		if sign(player.velocity.x) != old_sign:
 			player.velocity.x = 0
-		player.move_and_slide()
 	if !player.is_on_floor():
 		state_machine.change_state(NimbleFallState.new())
 

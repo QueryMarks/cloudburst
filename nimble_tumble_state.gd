@@ -2,7 +2,6 @@ extends NimbleJumpState
 class_name NimbleTumbleState
 
 func enter():
-	print("we are in tumbol")
 	player.anim_play("nimble/nimble_tumble")
 
 func _process(delta):

@@ -40,15 +40,12 @@ func _physics_process(_delta):
 			player.velocity.x = lr_dir * player.walk_speed
 		else:
 			player.velocity.x += lr_dir * player.walk_accel
-		player.move_and_slide()
 		var ud_input = Input.get_axis("up", "down")
 		aim(ud_input)
 		if !player.is_on_floor():
 			state_machine.change_state(NimbleFallState.new())
 		
 	else:
-		print(str(Input.is_action_pressed("right")) + "and" + str(Input.is_action_pressed("left")))
-		player.move_and_slide()
 		if !player.is_on_floor():
 			state_machine.change_state(NimbleFallState.new())
 		else:

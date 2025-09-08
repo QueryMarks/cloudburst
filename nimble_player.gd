@@ -33,3 +33,5 @@ func check_flip():
 		for bob in bobs:
 			bob.flip_h = !sprite.flip_h
 		shot_points.scale = shot_points.scale * Vector2(-1, 1)
+func _physics_process(_delta):
+	move_and_slide()
