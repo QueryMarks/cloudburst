@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://wa7umm2y1mwe"]
+[gd_scene load_steps=6 format=4 uid="uid://wa7umm2y1mwe"]
 
 [ext_resource type="PackedScene" uid="uid://clreti4w7sapl" path="res://nimble.tscn" id="1_rfpkf"]
 [ext_resource type="Texture2D" uid="uid://b6l8cfagqrcpa" path="res://sprites/cloud tile 8x8.png" id="2_od0h0"]
@@ -19,18 +19,6 @@ physics_layer_0/physics_material = SubResource("PhysicsMaterial_rfpkf")
 terrain_set_0/mode = 0
 sources/0 = SubResource("TileSetAtlasSource_vt2yd")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_6fnve"]
-size = Vector2(16, 144)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_od0h0"]
-size = Vector2(320, 16.3735)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_vt2yd"]
-size = Vector2(320, 16.3735)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_xdpsd"]
-size = Vector2(16, 144)
-
 [node name="Node2D" type="Node2D"]
 
 [node name="Grounmbd" type="TileMapLayer" parent="."]
@@ -45,26 +33,5 @@ zoom = Vector2(1, 1)
 process_callback = 0
 position_smoothing_enabled = true
 tilemap = NodePath("../../../Grounmbd")
-
-[node name="Bounds" type="Area2D" parent="."]
-position = Vector2(-257.915, -136.747)
-collision_layer = 128
-collision_mask = 128
-
-[node name="BoundsLeft" type="CollisionShape2D" parent="Bounds"]
-position = Vector2(169.915, 136.747)
-shape = SubResource("RectangleShape2D_6fnve")
-
-[node name="BoundsUp" type="CollisionShape2D" parent="Bounds"]
-position = Vector2(337.915, 56.5602)
-shape = SubResource("RectangleShape2D_od0h0")
-
-[node name="BoundsDown" type="CollisionShape2D" parent="Bounds/BoundsUp"]
-position = Vector2(0, 160.187)
-shape = SubResource("RectangleShape2D_vt2yd")
-
-[node name="BoundsRight" type="CollisionShape2D" parent="Bounds"]
-position = Vector2(505.915, 136.747)
-shape = SubResource("RectangleShape2D_xdpsd")
 
 [editable path="Nimble"]

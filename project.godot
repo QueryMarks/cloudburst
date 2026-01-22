@@ -13,6 +13,7 @@ config_version=5
 config/name="CLOUDBURST"
 run/main_scene="uid://wa7umm2y1mwe"
 config/features=PackedStringArray("4.4", "Mobile")
+run/max_fps=60
 config/icon="res://icon.svg"
 
 [autoload]

@@ -32,24 +32,15 @@ func shoot():
 			shots -= 1
 func air_shoot():
 	if shots > 0:
-			var shot_point
-			if player.aim < 0:
-				shot_point = shot_point_u
-				player.velocity.y += recoil_u.y
-			elif player.aim > 0:
-				shot_point = shot_point_d
-				player.velocity.y = recoil_d.y
-			elif player.aim == 0:
-				shot_point = shot_point_h
-				player.velocity.x += recoil_h.x * player.facing
-				player.velocity.y = recoil_h.y
-			player.state_machine.change_state(NimbleTumbleState.new())
-			var real_shot = shot.instantiate()
-			owner.add_child(real_shot)
-			active_shots.append(real_shot)
-			real_shot.shot_velocity = shot_speed
-			real_shot.global_transform = shot_point.global_transform
-			shots -= 1
+		shoot()
+		if player.aim < 0:
+			player.velocity.y += recoil_u.y
+		elif player.aim > 0:
+			player.velocity.y = recoil_d.y
+		elif player.aim == 0:
+			player.velocity.x += recoil_h.x * player.facing
+			player.velocity.y = recoil_h.y
+		player.state_machine.change_state(NimbleTumbleState.new())
 	
 func _physics_process(_delta):
 	if player.is_on_floor():
