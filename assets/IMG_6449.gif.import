@@ -1,0 +1,15 @@
+[remap]
+
+importer="import_gif_to_sprite_frames"
+type="SpriteFrames"
+uid="uid://dcu07f7exlwr4"
+path="res://.godot/imported/IMG_6449.gif-335203c8a795311c9d8d9e668cc5a250.tres"
+
+[deps]
+
+source_file="res://assets/IMG_6449.gif"
+dest_files=["res://.godot/imported/IMG_6449.gif-335203c8a795311c9d8d9e668cc5a250.tres"]
+
+[params]
+
+frames_per_second=30
