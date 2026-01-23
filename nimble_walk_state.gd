@@ -13,6 +13,8 @@ func _input(event):
 		state_machine.change_state(NimbleJumpState.new())
 	elif event.is_action_pressed("shoot"):
 		player.weapon.shoot()
+	elif event.is_action_pressed("down"):
+		state_machine.change_state(NimbleCheckState.new())
 
 func _physics_process(_delta):
 	#if Input.is_action_pressed("right") and !Input.is_action_pressed("left"):
