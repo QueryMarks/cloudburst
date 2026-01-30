@@ -3,6 +3,12 @@ class_name NimbleCheckState
 
 func enter():
 	player.anim_play("nimble/nimble_check")
+	var collision_checker = player.collision_checker
+	var checker_overlaps = collision_checker.get_overlapping_areas()
+	for overlap in checker_overlaps:
+		if overlap is SaveGame:
+			overlap.save_game()
+		
 	
 func _physics_process(_delta):
 	if (abs(player.velocity.x) > 0):
