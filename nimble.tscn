@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://clreti4w7sapl"]
+[gd_scene format=3 uid="uid://clreti4w7sapl"]
 
 [ext_resource type="Script" uid="uid://dj7ym72dv4nl" path="res://nimble_player.gd" id="1_4ltst"]
 [ext_resource type="Texture2D" uid="uid://ccbva74rofjmu" path="res://sprites/nimble sheet.png" id="1_n151j"]
@@ -93,6 +93,21 @@ tracks/5/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_dq5sm"]
 _data = {
 &"RESET": SubResource("Animation_n151j")
+}
+
+[sub_resource type="Animation" id="Animation_5x26n"]
+resource_name = "nimble_check"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2i(0, 2)]
 }
 
 [sub_resource type="Animation" id="Animation_5ksas"]
@@ -404,21 +419,6 @@ tracks/4/keys = {
 "values": [Vector2(-6, 4)]
 }
 
-[sub_resource type="Animation" id="Animation_5x26n"]
-resource_name = "nimble_check"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame_coords")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [Vector2i(0, 2)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_e0l1p"]
 _data = {
 &"nimble_check": SubResource("Animation_5x26n"),
@@ -443,9 +443,12 @@ RichTextLabel/constants/shadow_offset_y = 1
 RichTextLabel/constants/shadow_outline_size = 2
 RichTextLabel/fonts/normal_font = ExtResource("8_5x26n")
 
-[node name="Nimble" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5x26n"]
+size = Vector2(15, 16)
 
-[node name="NimbleBody" type="CharacterBody2D" parent="." node_paths=PackedStringArray("state_machine", "anim_player", "sprite", "weapon", "shot_points", "bobs")]
+[node name="Nimble" type="Node2D" unique_id=721843961]
+
+[node name="NimbleBody" type="CharacterBody2D" parent="." unique_id=1764290954 node_paths=PackedStringArray("state_machine", "anim_player", "sprite", "weapon", "shot_points", "bobs", "collision_checker")]
 position = Vector2(0, -8)
 script = ExtResource("1_4ltst")
 state_machine = NodePath("CharacterStateMachine")
@@ -454,46 +457,45 @@ sprite = NodePath("Sprite2D")
 weapon = NodePath("CloudBurst")
 shot_points = NodePath("ShotPointsEtc")
 bobs = [NodePath("../Nimblebob1"), NodePath("../Nimblebob2")]
+collision_checker = NodePath("OverlapCheck")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="NimbleBody"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NimbleBody" unique_id=1457873168]
 position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_ardgt")
 
-[node name="Sprite2D" type="Sprite2D" parent="NimbleBody"]
+[node name="Sprite2D" type="Sprite2D" parent="NimbleBody" unique_id=419764691]
 texture = ExtResource("1_n151j")
 hframes = 4
 vframes = 4
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="NimbleBody"]
-libraries = {
-&"": SubResource("AnimationLibrary_dq5sm"),
-&"nimble": SubResource("AnimationLibrary_e0l1p")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="NimbleBody" unique_id=1610991471]
+libraries/ = SubResource("AnimationLibrary_dq5sm")
+libraries/nimble = SubResource("AnimationLibrary_e0l1p")
 
-[node name="CharacterStateMachine" type="Node" parent="NimbleBody"]
+[node name="CharacterStateMachine" type="Node" parent="NimbleBody" unique_id=395060186]
 script = ExtResource("3_e0l1p")
 metadata/_custom_type_script = "uid://jafp1uve0ww2"
 
-[node name="ShotPointsEtc" type="Node2D" parent="NimbleBody"]
+[node name="ShotPointsEtc" type="Node2D" parent="NimbleBody" unique_id=1176664369]
 
-[node name="shotpointh" type="Node2D" parent="NimbleBody/ShotPointsEtc"]
+[node name="shotpointh" type="Node2D" parent="NimbleBody/ShotPointsEtc" unique_id=762886738]
 position = Vector2(7, 2)
 
-[node name="shotpointu" type="Node2D" parent="NimbleBody/ShotPointsEtc"]
+[node name="shotpointu" type="Node2D" parent="NimbleBody/ShotPointsEtc" unique_id=1997985169]
 position = Vector2(3, -8)
 rotation = -1.5708
 
-[node name="shotpointd" type="Node2D" parent="NimbleBody/ShotPointsEtc"]
+[node name="shotpointd" type="Node2D" parent="NimbleBody/ShotPointsEtc" unique_id=656863318]
 position = Vector2(0, 8)
 rotation = 1.5708
 
-[node name="NimbleBobTarget" type="Node2D" parent="NimbleBody/ShotPointsEtc"]
+[node name="NimbleBobTarget" type="Node2D" parent="NimbleBody/ShotPointsEtc" unique_id=528537781]
 position = Vector2(-9, -2)
 
-[node name="NimbleBobTarget2" type="Node2D" parent="NimbleBody/ShotPointsEtc"]
+[node name="NimbleBobTarget2" type="Node2D" parent="NimbleBody/ShotPointsEtc" unique_id=945327739]
 position = Vector2(-7, 2)
 
-[node name="CloudBurst" type="Node" parent="NimbleBody" node_paths=PackedStringArray("shot_point_h", "shot_point_u", "shot_point_d", "player")]
+[node name="CloudBurst" type="Node" parent="NimbleBody" unique_id=1033127335 node_paths=PackedStringArray("shot_point_h", "shot_point_u", "shot_point_d", "player")]
 script = ExtResource("4_e0l1p")
 shot_point_h = NodePath("../ShotPointsEtc/shotpointh")
 shot_point_u = NodePath("../ShotPointsEtc/shotpointu")
@@ -501,12 +503,11 @@ shot_point_d = NodePath("../ShotPointsEtc/shotpointd")
 max_shots = 5
 player = NodePath("..")
 
-[node name="Camera2D" type="Camera2D" parent="NimbleBody"]
+[node name="Camera2D" type="Camera2D" parent="NimbleBody" unique_id=951503136]
 position = Vector2(0, -24)
-zoom = Vector2(4, 4)
 script = ExtResource("5_hqsna")
 
-[node name="Pauser" type="Control" parent="NimbleBody"]
+[node name="Pauser" type="Control" parent="NimbleBody" unique_id=1642798131]
 process_mode = 3
 visible = false
 layout_mode = 3
@@ -517,7 +518,7 @@ offset_right = -322.0
 offset_bottom = -300.0
 script = ExtResource("9_ygh00")
 
-[node name="ColorRect" type="ColorRect" parent="NimbleBody/Pauser"]
+[node name="ColorRect" type="ColorRect" parent="NimbleBody/Pauser" unique_id=1708436047]
 texture_filter = 1
 material = SubResource("ShaderMaterial_klrr8")
 layout_mode = 0
@@ -527,7 +528,7 @@ offset_right = 819.0
 offset_bottom = 705.0
 color = Color(0.647059, 0.419608, 0.105882, 1)
 
-[node name="RichTextLabel" type="RichTextLabel" parent="NimbleBody/Pauser"]
+[node name="RichTextLabel" type="RichTextLabel" parent="NimbleBody/Pauser" unique_id=1414301424]
 texture_filter = 1
 layout_mode = 0
 offset_left = 285.0
@@ -539,14 +540,20 @@ text = "pause"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Nimblebob1" type="Sprite2D" parent="." node_paths=PackedStringArray("target")]
+[node name="OverlapCheck" type="Area2D" parent="NimbleBody" unique_id=2000071152]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NimbleBody/OverlapCheck" unique_id=2128695636]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_5x26n")
+
+[node name="Nimblebob1" type="Sprite2D" parent="." unique_id=1699970653 node_paths=PackedStringArray("target")]
 z_index = -1
 position = Vector2(-9, -10)
 texture = ExtResource("5_rs08u")
 script = ExtResource("6_ardgt")
 target = NodePath("../NimbleBody/ShotPointsEtc/NimbleBobTarget")
 
-[node name="Nimblebob2" type="Sprite2D" parent="." node_paths=PackedStringArray("target")]
+[node name="Nimblebob2" type="Sprite2D" parent="." unique_id=1645892242 node_paths=PackedStringArray("target")]
 z_index = -1
 position = Vector2(-7, -6)
 texture = ExtResource("7_ardgt")

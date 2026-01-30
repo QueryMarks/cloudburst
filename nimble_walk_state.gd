@@ -54,11 +54,13 @@ func _physics_process(_delta):
 			state_machine.change_state(NimbleIdleState.new())
 			
 func aim(ud_input):
-	if player.aim != ud_input:
-		var anim_pos = player.anim_player.current_animation_position
-		if ud_input < 0:
-			player.anim_play("nimble/nimble_walk_up")
-		elif ud_input == 0:
-			player.anim_play("nimble/nimble_walk")
-		player.anim_player.seek(anim_pos)
+	var anim_pos = player.anim_player.current_animation_position
+	if ud_input < 0:
+		player.anim_play("nimble/nimble_walk_up")
 		player.aim = ud_input
+	elif ud_input == 0:
+		player.anim_play("nimble/nimble_walk")
+		player.aim = 0
+	else:
+		player.aim = 0
+	player.anim_player.seek(anim_pos)

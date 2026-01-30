@@ -7,6 +7,7 @@ extends CharacterBody2D
 @export var air_speed := 50
 @export var tumble_speed := 200
 @export var jump_speed := -140
+@export var max_fallspeed := 200
 
 @export var state_machine : CharacterStateMachine
 @export var anim_player : AnimationPlayer
@@ -15,6 +16,8 @@ extends CharacterBody2D
 @export var shot_points : Node2D
 
 @export var bobs : Array[Sprite2D]
+
+@export var collision_checker : Area2D
 
 var facing = 1
 

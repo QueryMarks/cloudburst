@@ -35,7 +35,10 @@ func _physics_process(_delta):
 	var gravity = player.get_gravity()
 	if Input.is_action_pressed("jump"):
 		gravity = gravity/2
-	player.velocity += gravity
+	if (player.velocity.y + gravity.y <= player.max_fallspeed):
+		player.velocity += gravity
+	elif (player.velocity.y < player.max_fallspeed):
+		player.velocity.y = player.max_fallspeed
 
 	if player.is_on_floor():
 		if (lr_input != 0):

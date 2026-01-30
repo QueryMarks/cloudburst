@@ -34,11 +34,13 @@ func _physics_process(_delta):
 		state_machine.change_state(NimbleFallState.new())
 
 func aim(ud_input):
-	if player.aim != ud_input:
-		var anim_pos = player.anim_player.current_animation_position
-		if ud_input < 0:
-			player.anim_play("nimble/nimble_idle_up")
-		elif ud_input == 0:
-			player.anim_play("nimble/nimble_idle")
-		player.anim_player.seek(anim_pos)
+	var anim_pos = player.anim_player.current_animation_position
+	if ud_input < 0:
+		player.anim_play("nimble/nimble_idle_up")
 		player.aim = ud_input
+	elif ud_input == 0:
+		player.anim_play("nimble/nimble_idle")
+		player.aim = 0
+	else:
+		player.aim = 0
+	player.anim_player.seek(anim_pos)
